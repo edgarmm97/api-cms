@@ -69,6 +69,11 @@ export const findCategorias = async (req, res) => {
 
 }
 
+/*
+
+    Controlador para buscar la categoria por ID 
+*/
+
 export const findCategoriaById = async (req, res) => {
 
     const {idCategoria} = req.params;
@@ -85,4 +90,24 @@ export const findCategoriaById = async (req, res) => {
     
     }
 
+}
+
+/*
+    Controlador para actualizar la categoria
+*/
+
+export const updateCategoriaById = async (req, res) => {
+
+    const { idCategoria } = req.params;
+
+    const { name, slug } = req.body;
+
+    try {
+        const categoria = await Categoria.findByIdAndUpdate( idCategoria, {name: name, slug: slug});
+
+        return res.status(200).json({msg: 'Categoria actualizada correctamente'})
+        
+    } catch (error) {
+        console.error(error);
+    }
 }

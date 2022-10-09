@@ -12,6 +12,7 @@ router.post('/create', CategoriaController.createCategoria);
 
 router.delete('/:idCategoria', CategoriaController.deleteCategoriaById);
 
+router.put('/:idCategoria', CategoriaController.updateCategoriaById);
 
 
 export default router;
