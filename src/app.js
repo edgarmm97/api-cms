@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import { PORT, PREFIX } from './config';
 
+import CategoriasRouter from './routes/CategoriaRoutes';
+
 const app = express();
 
 app.use(morgan('dev'))
@@ -14,9 +16,10 @@ app.set('port', PORT);
 
 //app.use("api/v1/categorias", CategoriasRouter);
 
-app.get(`/${PREFIX}`, (req, res) => {
+app.get('/', (req, res) => {
     res.json({message: 'Hola mundo'});
 })
 
+app.use(`/${PREFIX}/categoria`, CategoriasRouter);
 
 export default app;
