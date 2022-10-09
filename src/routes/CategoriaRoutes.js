@@ -4,10 +4,14 @@ const router = Router();
 
 import * as CategoriaController from '../controllers/CategoriasController';
 
-router.get('/index', (req, res) => {
-    res.json({message: 'Hola mundo'});
-})
+router.get('/', CategoriaController.findCategorias);
+
+router.get('/:idCategoria', CategoriaController.findCategoriaById);
 
 router.post('/create', CategoriaController.createCategoria);
+
+router.delete('/:idCategoria', CategoriaController.deleteCategoriaById);
+
+
 
 export default router;
