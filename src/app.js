@@ -3,8 +3,10 @@ import morgan from 'morgan';
 import { PORT, PREFIX } from './config';
 
 import CategoriasRouter from './routes/CategoriaRoutes';
+import UsuariosRouter from './routes/UsuarioRoute';
 
 const app = express();
+const {errors} = require('celebrate');
 
 app.use(morgan('dev'))
 
@@ -21,5 +23,7 @@ app.get('/', (req, res) => {
 })
 
 app.use(`/${PREFIX}/categoria`, CategoriasRouter);
+app.use(`/${PREFIX}/usuario`, UsuariosRouter);
 
+app.use(errors())
 export default app;
