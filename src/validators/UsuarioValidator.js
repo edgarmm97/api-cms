@@ -12,4 +12,11 @@ const registro = celebrate({
     })
 });
 
-module.exports = {registro};
+const login = celebrate({
+    [Segments.BODY]: Joi.object().keys({
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+    })
+});
+
+module.exports = {registro,login};
